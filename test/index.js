@@ -1,19 +1,4 @@
-# table-multiple-header
-多表头生成
-
-## install 
-
-`npm install --save table-multiple-header`
-
-## useage
-
-`tableMultipleHeader(data[, options])` or `tableMultipleHeader( SimpleTreeStore )`
-
-## examples
-
-```
-const tableMultipleHeader = require('table-multiple-header');
-
+const TableMultipleHeader = require('../index');
 const columns = [
 	{
 		id: 1
@@ -40,11 +25,7 @@ const columns = [
 	},
 ];
 
-const result = tableMultipleHeader(columns, {
-    idField: 'id',
-    childrenField: 'children',
-    rootId: null
-});
+const result = TableMultipleHeader(columns);
 
 const trs = result.map(row => {
 	return ['<tr>',
@@ -61,5 +42,3 @@ const table = `<table>
 </table>`;
 
 console.log(table)
-
-```

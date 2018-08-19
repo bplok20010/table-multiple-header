@@ -1,0 +1,22 @@
+{
+  "name": "table-multiple-header",
+  "version": "1.0.0",
+  "description": "多表头生成",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bplok20010/table-multiple-header.git"
+  },
+  "author": "nobo.zhou@foxmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bplok20010/table-multiple-header/issues"
+  },
+  "homepage": "https://github.com/bplok20010/table-multiple-header#readme",
+  "dependencies": {
+    "simple-tree-store": "^1.1.1"
+  }
+}
