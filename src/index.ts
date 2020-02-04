@@ -20,6 +20,8 @@ export interface TCell {
 	data: {};
 }
 
+export default tableMultipleHeader;
+
 export function tableMultipleHeader(store: Store) {
 	const treeDepth = store.getMaxDepth();
 	const rows: Array<TCell[]> = [];

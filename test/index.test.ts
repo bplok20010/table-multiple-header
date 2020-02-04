@@ -1,5 +1,5 @@
 import { TreeStore } from "xtree-store";
-import { tableMultipleHeader } from "../src";
+import tableMultipleHeader from "../src";
 const data = [
 	{
 		id: "序号",
