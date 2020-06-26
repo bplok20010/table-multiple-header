@@ -1,30 +1,31 @@
 type IdType = string | number;
 
-interface Node {
-	id: IdType;
-	data: {};
-	[x: string]: any;
-}
+type DataType = Record<IdType, any>;
 
-interface Store {
+export type TNode<T = DataType> = Record<string | number, any> & {
+	id: any;
+	data: T;
+};
+
+export interface TStore {
 	getMaxDepth(): number;
-	getDepthNodes(depth?: number): Node[];
-	getChildren(id?: IdType): Node[];
-	getAllChildren(id?: IdType): Node[];
-	getParentNodes(id?: IdType): Node[];
+	getDepthNodes(depth?: number): TNode[];
+	getChildren(id?: IdType): TNode[];
+	getAllChildren(id?: IdType): TNode[];
+	getParentNodes(id?: IdType): TNode[];
 }
 
-export interface TCell {
+export interface TCell<T = DataType> {
 	rowSpan: number;
 	colSpan: number;
-	data: {};
+	data: T;
 }
 
 export default tableMultipleHeader;
 
-export function tableMultipleHeader(store: Store) {
+export function tableMultipleHeader<T = DataType>(store: TStore) {
 	const treeDepth = store.getMaxDepth();
-	const rows: Array<TCell[]> = [];
+	const rows: Array<TCell<T>[]> = [];
 
 	function isLeaf(id: IdType) {
 		return store.getChildren(id).length === 0;
@@ -34,7 +35,7 @@ export function tableMultipleHeader(store: Store) {
 		rows[i] = [];
 		const nodes = store.getDepthNodes(i + 1);
 
-		nodes.forEach(function(node) {
+		nodes.forEach(function (node: TNode<T>) {
 			const id = node.id;
 			let rowSpan = 1;
 			let colSpan = 1;
