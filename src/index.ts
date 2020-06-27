@@ -1,18 +1,18 @@
-type IdType = string | number;
+type IdType = any;
 
 type DataType = Record<IdType, any>;
 
-export type TNode<T = DataType> = Record<string | number, any> & {
+export type TNode<T = DataType> = Record<IdType, any> & {
 	id: any;
 	data: T;
 };
 
-export interface TStore {
+export interface TStore<T> {
 	getMaxDepth(): number;
-	getDepthNodes(depth?: number): TNode[];
-	getChildren(id?: IdType): TNode[];
-	getAllChildren(id?: IdType): TNode[];
-	getParentNodes(id?: IdType): TNode[];
+	getDepthNodes(depth?: number): TNode<T>[];
+	getChildren(id?: IdType): TNode<T>[];
+	getAllChildren(id?: IdType): TNode<T>[];
+	getParentNodes(id?: IdType): TNode<T>[];
 }
 
 export interface TCell<T = DataType> {
@@ -23,7 +23,7 @@ export interface TCell<T = DataType> {
 
 export default tableMultipleHeader;
 
-export function tableMultipleHeader<T = DataType>(store: TStore) {
+export function tableMultipleHeader<T = DataType>(store: TStore<T>) {
 	const treeDepth = store.getMaxDepth();
 	const rows: Array<TCell<T>[]> = [];
 
